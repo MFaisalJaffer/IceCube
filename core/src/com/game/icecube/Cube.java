@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Graphics.*;
-
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import java.awt.Rectangle;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -34,8 +34,8 @@ public class Cube implements Serializable{
     Texture texture;
     String textureLoc;
     InputProcessor input;
-    boolean touch;
-
+    boolean right;
+    boolean left;
 
     private static final int col =4;
     private static final int row = 4;
@@ -50,19 +50,32 @@ public class Cube implements Serializable{
     public boolean Down = false;
     SpriteBatch batch;
     Animation animation;
+    Animation animation1;
+    String direction;
     Texture spritesheet;
+    Texture spritesheet1;
     TextureRegion currentframe;
+    TextureRegion currentframe1;
     TextureRegion [][] frames;
-
+    TextureRegion [][] frames1;
+    Texture cubewalking1;
+    Texture cubewalking2;
 
     float frameTime;
     public Cube(Vector2 position, String textureLoc){
         this.position = position;
         this.texture = new Texture(Gdx.files.internal(textureLoc));
-        spritesheet = new Texture(Gdx.files.internal("Sprite-2.png"));
-        frames = TextureRegion.split(spritesheet, spritesheet.getWidth()/3, spritesheet.getHeight());
-        animation=new Animation(0.055f, frames[0]);
-        touch = false;
+        direction="Swing Sprite(Flip).png";
+        spritesheet = new Texture(Gdx.files.internal("Swing Sprite.png"));
+        spritesheet1 = new Texture(Gdx.files.internal("Swing Sprite(Flip).png"));
+        frames = TextureRegion.split(spritesheet, spritesheet.getWidth()/4, spritesheet.getHeight());
+        frames1= TextureRegion.split(spritesheet1, spritesheet.getWidth()/4, spritesheet.getHeight());
+        animation=new Animation(0.09f, frames[0]);
+        animation1=new Animation(0.09f, frames1[0]);
+        right = false;
+        left=false;
+        cubewalking1 = new Texture(Gdx.files.internal("Ice Cube1.png"));
+
 
 
 
@@ -75,65 +88,60 @@ public class Cube implements Serializable{
         float delta = Gdx.graphics.getDeltaTime();
         float posy = 0;
         frameTime += delta;
+        currentframe1 = animation1.getKeyFrame(frameTime, left);
+        currentframe = animation.getKeyFrame(frameTime, right);
 
-        currentframe = animation.getKeyFrame(frameTime, touch);
         if (Gdx.input.isTouched()){
-            if (Gdx.input.getX() < 1000) {
+            if (Gdx.input.getX() < Gdx.graphics.getWidth()/10 && position.y < 150) {
                 Up=true;
+
             }
             else{
                 Up = false;
             }
-            if (Gdx.input.getX() < 1000 && Gdx.input.getX()>1000 && Gdx.input.getX()<1500) {
-                UL=true;
 
-            }
-            else{
-                UL = false;
-            }
-            if (Gdx.input.getX() < 1000 && Gdx.input.getX()>1500 ) {
-                UR=true;
-
-            }
-            else{
-                UR = false;
-            }
-            if (Gdx.input.getX()>1000 && Gdx.input.getX()<1500) {
+            if (Gdx.input.getX() > 8*Gdx.graphics.getWidth()/10 && Gdx.input.getX() < 9*Gdx.graphics.getWidth()/10) {
                 Left=true;
+                Right=false;
+                left=true;
             }
             else{
                 Left = false;
+
             }
-            if (Gdx.input.getX()>1500 ){
+            if (Gdx.input.getX() > 9*Gdx.graphics.getWidth()/10 && Gdx.input.getX() < 10*Gdx.graphics.getWidth()/10) {
                 Right=true;
+                Left=false;
+                right=true;
             }
             else{
                 Right = false;
             }
-            if (Up) {
-                jump();
-            }
-            if (Gdx.input.getX() < 1000 && Gdx.input.getX()>1500){
-                ur();
-            }
-            if (Gdx.input.getX() < 1000 && Gdx.input.getX()>1000 && Gdx.input.getX()<1500){
-                ul();
-            }
+
             if (Left){
-                touch=true;
+
                 left();
             }
             if (Right){
-                touch=true;
+
                 right();
             }
             if (UR){
+
                 jump();
                 right();
             }
             if (UL){
                 jump();
                 left();
+            }
+            if (Up){
+                jump();
+                Up=false;
+            }
+            if (!Gdx.input.isTouched()){
+                right=false;
+                left=false;
             }
         }
         else {
@@ -146,14 +154,22 @@ public class Cube implements Serializable{
         if (position.y<75){
             position.y=75;
         }
+    }
+    public void draw (SpriteBatch batch){
+            if (!Gdx.input.isTouched()){
+                batch.draw(cubewalking1, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
+                right=false;
+                left=false;
+            }
+        if (Right){
+            batch.draw(currentframe, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
+        }
 
-
-
-
-
+        if (Left){
+            batch.draw(currentframe1, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
+        }
 
     }
-
     public void action(int type){
 
     }
