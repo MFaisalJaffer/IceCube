@@ -6,7 +6,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import com.badlogic.gdx.graphics.PerspectiveCamera;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 public class IceCubeGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture h;
@@ -14,18 +17,24 @@ public class IceCubeGame extends ApplicationAdapter {
     Floor floor;
     Cloud cloud;
     PalmTree tree;
+    Control control;
     Sun sun;
     Vector2 position;
+    private Viewport viewport;
+    private Camera camera;
 
 	@Override
 	public void create () {
+        camera = new PerspectiveCamera();
+        viewport = new FitViewport(200, 280, camera);
         sun = new Sun(new Vector2(Gdx.graphics.getWidth()-204, Gdx.graphics.getHeight()-131), "Sun.png");
 		batch = new SpriteBatch();
         tree = new PalmTree(new Vector2 (Gdx.graphics.getWidth()/2, 99), "Palm Tree.png");
-        cube = new Cube(new Vector2(Gdx.graphics.getWidth()/20, 75), "Sprite-2.png");
+            cube = new Cube(new Vector2(Gdx.graphics.getWidth()/20, 500), "Sprite-2.png");
         floor = new Floor(new Vector2(0, 0), "Ground.png");
         cloud = new Cloud (new Vector2(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()-100), "Cloud.png");
         position = new Vector2(Gdx.graphics.getWidth(), 10);
+        control = new Control(new Vector2(0,0), "A&B.png");
 	}
 
 	@Override
@@ -35,15 +44,22 @@ public class IceCubeGame extends ApplicationAdapter {
         cube.update();
         tree.update();
         cloud.update();
+        control.update();
         sun.update();
+
+        if (cloud.getPosition().x==cube.getPosition().x){
+
+        }
+
 		batch.begin();
         batch.draw(sun.getTexture(), sun.getPosition().x, sun.getPosition().y);
-        batch.draw(tree.getTexture(), tree.getPosition().x, tree.getPosition().y);
+        batch.draw(tree.getTexture(), tree.getPosition().x, tree.getPosition().y, Gdx.graphics.getWidth()/12, Gdx.graphics.getHeight()/4);
 
         batch.draw(cloud.getTexture(), cloud.getPosition().x, cloud.getPosition().y);
         batch.draw(floor.getTexture(), floor.getPosition().x, floor.getPosition().y);
         batch.draw(floor.getTexture(), 1127, floor.getPosition().y);
-        batch.draw(cube.getCurrentframe(), cube.getPosition().x, cube.getPosition().y);
-		batch.end();
+        cube.draw(batch);
+		batch.draw(control.getTexture(), control.getPosition().x, control.getPosition().y, Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/7);
+        batch.end();
 	}
 }
