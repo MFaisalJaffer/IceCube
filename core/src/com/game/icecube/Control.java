@@ -12,7 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-
+// character will dissapear if pressing mid screen
 public class Control implements Serializable{
 
     private static long serialVersionUID = 1L;
