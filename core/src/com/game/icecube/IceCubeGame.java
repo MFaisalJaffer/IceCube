@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.math.Rectangle;
 public class IceCubeGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture h;
@@ -18,6 +19,7 @@ public class IceCubeGame extends ApplicationAdapter {
     Cloud cloud;
     PalmTree tree;
     Control control;
+    Money money;
     Sun sun;
     Vector2 position;
     private Viewport viewport;
@@ -35,6 +37,8 @@ public class IceCubeGame extends ApplicationAdapter {
         cloud = new Cloud (new Vector2(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()-100), "Cloud.png");
         position = new Vector2(Gdx.graphics.getWidth(), 10);
         control = new Control(new Vector2(0,0), "A&B.png");
+        money = new Money(new Vector2(100,100), new Vector2( 50, 100));
+
 	}
 
 	@Override
@@ -46,9 +50,12 @@ public class IceCubeGame extends ApplicationAdapter {
         cloud.update();
         control.update();
         sun.update();
+        money.update();
 
-        if (cloud.getPosition().x==cube.getPosition().x){
 
+
+        if (cube.getBounds().overlaps(money.getBounds())){
+            System.out.println("Collision");
         }
 
 		batch.begin();
@@ -60,6 +67,7 @@ public class IceCubeGame extends ApplicationAdapter {
         batch.draw(floor.getTexture(), 1127, floor.getPosition().y);
         cube.draw(batch);
 		batch.draw(control.getTexture(), control.getPosition().x, control.getPosition().y, Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/7);
+        money.draw(batch);
         batch.end();
 	}
 }
