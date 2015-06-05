@@ -1,27 +1,21 @@
 package com.game.icecube;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Graphics.*;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import java.awt.Rectangle;
+import com.badlogic.gdx.math.Rectangle;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
-import javafx.animation.*;
-import javafx.animation.AnimationTimer;
 
 
 /**
@@ -61,9 +55,13 @@ public class Cube implements Serializable{
     Texture cubewalking1;
     Texture cubewalking2;
 
+    Rectangle bounds;
+
     float frameTime;
     public Cube(Vector2 position, String textureLoc){
         this.position = position;
+
+
         this.texture = new Texture(Gdx.files.internal(textureLoc));
         direction="Swing Sprite(Flip).png";
         spritesheet = new Texture(Gdx.files.internal("Swing Sprite.png"));
@@ -76,7 +74,7 @@ public class Cube implements Serializable{
         left=false;
         cubewalking1 = new Texture(Gdx.files.internal("Ice Cube1.png"));
 
-
+        bounds = new Rectangle(position.x, position.y, currentframe.getRegionWidth(), currentframe.getRegionHeight() );
 
 
 
@@ -85,6 +83,7 @@ public class Cube implements Serializable{
 
 
     public void update (){
+        bounds.set(position.x, position.y, currentframe.getRegionWidth(), currentframe.getRegionHeight() );
         float delta = Gdx.graphics.getDeltaTime();
         float posy = 0;
         frameTime += delta;
@@ -200,6 +199,9 @@ public class Cube implements Serializable{
 
     }
 
+    public void setBounds(Rectangle bounds) {
+        this.bounds = bounds;
+    }
 
     public TextureRegion getCurrentframe() {
         return currentframe;
@@ -254,5 +256,7 @@ public class Cube implements Serializable{
         this.texture = texture;
     }
 
-
+    public Rectangle getBounds() {
+        return bounds;
+    }
 }
