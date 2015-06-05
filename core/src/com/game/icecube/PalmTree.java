@@ -12,7 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-
+// tree is overlapping the cube
 public class PalmTree implements Serializable{
 
     private static long serialVersionUID = 1L;
