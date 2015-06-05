@@ -80,7 +80,8 @@ public class Cube implements Serializable{
 
     }
 
-
+// character can only jump or walk, needs both
+// character dissapears durring jump
 
     public void update (){
         bounds.set(position.x, position.y, currentframe.getRegionWidth(), currentframe.getRegionHeight() );
