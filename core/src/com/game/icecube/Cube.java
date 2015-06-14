@@ -144,15 +144,34 @@ public class Cube implements Serializable{
                 left=false;
             }
         }
-        else {
+         else {
             stop();
         }
 
        vel_y-=70*delta;
        position.y+=vel_y;
        position.x+=vel_x;
-        if (position.y<75){
-            position.y=75;
+        if (position.y<75 && PlayScreen.level!=3){
+            position.y = 75;
+
+        }
+        if (position.y<105 && PlayScreen.level==3){
+            position.y = 125;
+
+        }
+
+        if (PlayScreen.level == 1 &&( position.x+(Gdx.graphics.getWidth()/14))>((Gdx.graphics.getWidth()*6)/10)&& position.x<(((Gdx.graphics.getWidth()*6)/10)+Gdx.graphics.getWidth()/6) && position.y<((Gdx.graphics.getHeight()/6)+100)){
+            position.y=Gdx.graphics.getHeight()/6+78;
+        }
+        if (PlayScreen.level == 3 &&( position.x+(Gdx.graphics.getWidth()/14))>((Gdx.graphics.getWidth()*6)/10)&& position.x<(((Gdx.graphics.getWidth()*6)/10)+Gdx.graphics.getWidth()/3) && position.y>((Gdx.graphics.getHeight()/3)+100)){
+            position.y=Gdx.graphics.getHeight()/3+78;
+            position.y+=70;
+        }
+        if (PlayScreen.level == 3 &&( position.x+(Gdx.graphics.getWidth()/14))>(240)&& position.x<(450) && position.y<((Gdx.graphics.getHeight()*7)/10)){
+            position.y=(Gdx.graphics.getHeight()*15)/20;
+        }
+        if (PlayScreen.level == 3 &&( position.x+(Gdx.graphics.getWidth()/14))>(750)&& position.x<(800) && position.y<((Gdx.graphics.getHeight()*7)/10)){
+            position.y=((Gdx.graphics.getHeight()*10)/20)+45;
         }
     }
     public void draw (SpriteBatch batch){
