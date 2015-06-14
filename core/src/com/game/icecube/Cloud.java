@@ -35,6 +35,13 @@ public class Cloud implements Serializable{
 
     }
 
+
+
+
+    public void setInput(InputProcessor input) {
+        this.input = input;
+    }
+
     @SuppressWarnings("unused")
     private static byte[] serialize(Object obj) throws IOException{
         ByteArrayOutputStream b = new ByteArrayOutputStream();
@@ -60,4 +67,7 @@ public class Cloud implements Serializable{
     public void setTexture(Texture texture){
         this.texture = texture;
     }
+
+
 }
+
