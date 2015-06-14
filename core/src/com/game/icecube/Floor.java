@@ -14,6 +14,12 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+/**
+ * A class representing the ground that ice cube and enemies stand
+ * and move around on
+ * 
+ **/
+
 public class Floor implements Serializable{
 
     private static long serialVersionUID = 1L;
