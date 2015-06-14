@@ -51,9 +51,16 @@ public class Floor implements Serializable{
         batch = new SpriteBatch();
 
     }
+    
+    /**
+     * Updates the position and texture of the floor on the map regularly
+     **/
     public void update (){
-
     }
+    
+    /**
+     * Draws the ground of the level depending on which level it is
+     **/
     public void draw (SpriteBatch batch){
 
 
@@ -75,9 +82,8 @@ public class Floor implements Serializable{
         }
 
     }
+    
     public void dispose(){
-
-
     }
 
     @SuppressWarnings("unused")
@@ -93,15 +99,31 @@ public class Floor implements Serializable{
         ObjectInputStream o = new ObjectInputStream(b);
         return o.readObject();
     }
+    
+    /**
+     * Returns the position of the floor
+     **/
     public Vector2 getPosition(){
         return position;
     }
+    
+    /**
+     * Sets the position of the floor to its current position
+     **/
     public void setPosition(Vector2 position){
         this.position = position;
     }
+    
+    /**
+     * Returns the texture of the floor
+     **/
     public Texture getTexture(){
         return texture;
     }
+    
+    /**
+     * Sets the texture of the floor to its current texture
+     **/
     public void setTexture(Texture texture){
         this.texture = texture;
     }
