@@ -1,13 +1,14 @@
 package com.game.icecube;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -15,7 +16,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.Rectangle;
+import javafx.animation.*;
+import javafx.animation.AnimationTimer;
 
 
 /**
@@ -38,6 +44,7 @@ public class Cube implements Serializable{
     public float vel_y = 0;
     public boolean Left = false;
     public boolean Right = false;
+    public static float ground;
     public boolean Up = false;
     public boolean UL = false;
     public boolean UR = false;
@@ -50,18 +57,18 @@ public class Cube implements Serializable{
     Texture spritesheet1;
     TextureRegion currentframe;
     TextureRegion currentframe1;
+    TextureRegion hello;
     TextureRegion [][] frames;
     TextureRegion [][] frames1;
     Texture cubewalking1;
-    Texture cubewalking2;
-
+    Texture cubewalking;
+    PlayScreen play;
     Rectangle bounds;
-
+    Police police;
+    public static int facing= 0;
     float frameTime;
     public Cube(Vector2 position, String textureLoc){
         this.position = position;
-
-
         this.texture = new Texture(Gdx.files.internal(textureLoc));
         direction="Swing Sprite(Flip).png";
         spritesheet = new Texture(Gdx.files.internal("Swing Sprite.png"));
@@ -73,23 +80,26 @@ public class Cube implements Serializable{
         right = false;
         left=false;
         cubewalking1 = new Texture(Gdx.files.internal("Ice Cube1.png"));
+        cubewalking = new Texture(Gdx.files.internal("cubewalking.png"));
+        bounds = new Rectangle(position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
+        police = new Police (new Vector2(Gdx.graphics.getWidth()-350, 80), "policecar.png");
 
-        bounds = new Rectangle(position.x, position.y, currentframe.getRegionWidth(), currentframe.getRegionHeight() );
 
 
 
     }
 
-// character can only jump or walk, needs both
-// character dissapears durring jump
+
 
     public void update (){
-        bounds.set(position.x, position.y, currentframe.getRegionWidth(), currentframe.getRegionHeight() );
+        bounds.set(position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
         float delta = Gdx.graphics.getDeltaTime();
         float posy = 0;
         frameTime += delta;
         currentframe1 = animation1.getKeyFrame(frameTime, left);
         currentframe = animation.getKeyFrame(frameTime, right);
+
+
 
         if (Gdx.input.isTouched()){
             if (Gdx.input.getX() < Gdx.graphics.getWidth()/10 && position.y < 150) {
@@ -143,8 +153,9 @@ public class Cube implements Serializable{
                 right=false;
                 left=false;
             }
+
         }
-         else {
+        else {
             stop();
         }
 
@@ -176,17 +187,35 @@ public class Cube implements Serializable{
     }
     public void draw (SpriteBatch batch){
             if (!Gdx.input.isTouched()){
-                batch.draw(cubewalking1, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
                 right=false;
                 left=false;
             }
         if (Right){
             batch.draw(currentframe, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
+            facing=0;
+        }
+        else{
+            Right=false;
         }
 
         if (Left){
             batch.draw(currentframe1, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
+            facing=1;
         }
+        else{
+            Left=false;
+        }
+        if (Up){
+            batch.draw(cubewalking1, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
+
+        }
+        if (facing==0 && Right==false){
+            batch.draw(cubewalking1, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
+        }
+        if (facing==1 && Left==false ){
+            batch.draw(cubewalking, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
+        }
+
 
     }
     public void action(int type){
@@ -194,20 +223,20 @@ public class Cube implements Serializable{
     }
 
     public void jump(){
-        vel_y= 20;
+        vel_y= (Gdx.graphics.getHeight()/30);
     }
     public void left(){
         vel_x= -8;
     }
     public void ul (){
         vel_x= -8;
-        vel_y= 20;
+        vel_y= 12;
     }
     public void ur(){
         vel_x= 8;
-        vel_y= 20;
+        vel_y= 12;
     }
-       public void right(){
+    public void right(){
         if (PlayScreen.level == 1 && (position.x+Gdx.graphics.getWidth()/14)+15>((Gdx.graphics.getWidth()*6)/10) && Right && position.y<((Gdx.graphics.getHeight()/6)+75) && position.x<(((Gdx.graphics.getWidth()*6)/10)+Gdx.graphics.getWidth()/6)){
             vel_x=0;
         }
@@ -218,6 +247,7 @@ public class Cube implements Serializable{
             vel_x = 8;
         }
     }
+
     public void stop(){
         vel_x=0;
     }
@@ -227,9 +257,6 @@ public class Cube implements Serializable{
 
     }
 
-    public void setBounds(Rectangle bounds) {
-        this.bounds = bounds;
-    }
 
     public TextureRegion getCurrentframe() {
         return currentframe;
@@ -247,7 +274,13 @@ public class Cube implements Serializable{
         return frames;
     }
 
+    public Rectangle getBounds() {
+        return bounds;
+    }
 
+    public void setBounds(Rectangle bounds) {
+        this.bounds = bounds;
+    }
 
     public void setFrames(TextureRegion[][] frames) {
         this.frames = frames;
@@ -284,7 +317,5 @@ public class Cube implements Serializable{
         this.texture = texture;
     }
 
-    public Rectangle getBounds() {
-        return bounds;
-    }
+
 }
