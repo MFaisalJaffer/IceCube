@@ -2,6 +2,7 @@ package com.game.icecube;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.Gdx;
 
@@ -12,7 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-// character will dissapear if pressing mid screen
+
 public class Control implements Serializable{
 
     private static long serialVersionUID = 1L;
@@ -20,14 +21,26 @@ public class Control implements Serializable{
     Texture texture;
     String textureLoc;
     InputProcessor input;
-
+    Texture left;
+    Texture up;
 
 
     public Control(Vector2 position, String textureLoc){
         this.position = position;
         this.texture = new Texture(Gdx.files.internal(textureLoc));
+        left = new Texture(Gdx.files.internal("Buttons.png"));
+        up = new Texture(Gdx.files.internal("A&B.png"));
+
+
     }
     public void update (){
+
+
+
+    }
+    public void draw(SpriteBatch batch){
+        batch.draw(up , 0, 0, Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/7);
+        batch.draw(left , (Gdx.graphics.getWidth()*8)/10, 0, Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/7);
 
 
     }
