@@ -188,8 +188,16 @@ public class Cube implements Serializable{
         vel_x= 8;
         vel_y= 20;
     }
-    public void right(){
-        vel_x= 8;
+       public void right(){
+        if (PlayScreen.level == 1 && (position.x+Gdx.graphics.getWidth()/14)+15>((Gdx.graphics.getWidth()*6)/10) && Right && position.y<((Gdx.graphics.getHeight()/6)+75) && position.x<(((Gdx.graphics.getWidth()*6)/10)+Gdx.graphics.getWidth()/6)){
+            vel_x=0;
+        }
+        if (PlayScreen.level == 3 && (position.x+Gdx.graphics.getWidth()/14)+15>240 && Right && position.y<((Gdx.graphics.getHeight()*3)/4) && position.x<450){
+            vel_x=0;
+        }
+        else {
+            vel_x = 8;
+        }
     }
     public void stop(){
         vel_x=0;
