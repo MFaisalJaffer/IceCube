@@ -13,7 +13,11 @@ import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import sun.applet.Main;
-
+/**
+ * The main game code, implements the other classes
+ * 
+ * 
+ **/
 public class IceCubeGame extends Game {
     Game game;
 	@Override
