@@ -14,6 +14,11 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import sun.applet.Main;
 
+/**
+ * Main Ice Cube class which creates and renders the game
+ * starting from the main menu
+ **/
+
 public class IceCubeGame extends Game {
     Game game;
 	@Override
