@@ -1,7 +1,7 @@
 package com.game.icecube;
 
 /**
- * Created by faisaljaffer on 15-06-01.
+ * creates the level screen
  */
 public class LevelScreen {
 }
