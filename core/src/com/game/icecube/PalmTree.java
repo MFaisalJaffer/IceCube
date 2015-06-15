@@ -1,5 +1,6 @@
 package com.game.icecube;
 
+//importing the main LibGDX libraries for graphics and movement
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
@@ -22,7 +23,7 @@ public class PalmTree implements Serializable{
     InputProcessor input;
 
 
-
+//palmtree texture and position placement
     public PalmTree(Vector2 position, String textureLoc){
         this.position = position;
         this.texture = new Texture(Gdx.files.internal(textureLoc));
