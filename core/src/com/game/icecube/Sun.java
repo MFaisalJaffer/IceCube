@@ -1,5 +1,5 @@
 package com.game.icecube;
-
+//libgdx library import
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
@@ -20,7 +20,7 @@ public class Sun implements Serializable{
     Texture texture;
     String textureLoc;
     InputProcessor input;
-
+String2 texture; 
 
 
     public Sun(Vector2 position, String textureLoc){
