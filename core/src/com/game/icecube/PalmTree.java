@@ -1,5 +1,11 @@
 package com.game.icecube;
 
+
+/**
+ * Name: Faisal, Ryan, Dimitar and Zain
+ * Description: creates the image of a palmtree
+**/
+
 //importing the main LibGDX libraries for graphics and movement
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
