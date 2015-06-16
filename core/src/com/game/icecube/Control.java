@@ -27,6 +27,7 @@ public class Control implements Serializable{
     Texture left;
     Texture up;
 
+//Controls texture drawing by importing the buttons images
 
     public Control(Vector2 position, String textureLoc){
         this.position = position;
@@ -42,6 +43,7 @@ public class Control implements Serializable{
 
     }
     /** positions **/
+    //the position of the buttons is relatively positioned on the phone by the following code
     public void draw(SpriteBatch batch){
         batch.draw(up , 0, 0, Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/7);
         batch.draw(left , (Gdx.graphics.getWidth()*8)/10, 0, Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/7);
