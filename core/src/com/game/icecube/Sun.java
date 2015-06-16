@@ -1,4 +1,10 @@
 package com.game.icecube;
+
+/**
+ * Name: Faisal, Ryan, Dimitar and Zain
+ * Description: creates the image of the sun that shines in the top of the screen
+**/
+
 //libgdx library import
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
