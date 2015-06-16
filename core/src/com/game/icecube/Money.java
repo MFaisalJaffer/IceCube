@@ -1,5 +1,8 @@
 package com.game.icecube;
-
+/**
+ * Name: Faisal, Ryan, Dimitar and Zain
+ * Description: creates the image of a stack of money that is colected by the user
+ */
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -7,9 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
-/**
- * Created by Dimitar on 01/06/2015.
- */
+
 public class Money{
     public Vector2 getSize() {
         return size;
