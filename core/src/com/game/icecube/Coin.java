@@ -1,6 +1,8 @@
 package com.game.icecube;
- /** 
- This class is to draw the money on the screen in the correct position
+
+ /**
+ * Name: Faisal, Ryan, Dimitar and Zain
+ * Description: This class is to draw the money on the screen in the correct position
  **/
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
