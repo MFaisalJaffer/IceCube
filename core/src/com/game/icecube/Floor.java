@@ -15,8 +15,8 @@ import java.io.Serializable;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
- * A class representing the ground that ice cube and enemies stand
- * and move around on
+ * Name: Faisal, Ryan, Dimitar and Zain
+ * Description: A class representing the ground that ice cube and enemies stand and move around on
  * 
  **/
 
