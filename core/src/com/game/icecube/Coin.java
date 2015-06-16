@@ -1,5 +1,7 @@
 package com.game.icecube;
-
+ /** 
+ This class is to draw the money on the screen in the correct position
+ **/
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -26,10 +28,10 @@ public class Control implements Serializable{
 
 
     public Control(Vector2 position, String textureLoc){
-        this.position = position;
+        this.position = position;  /** gets the posisition set previously**/
         this.texture = new Texture(Gdx.files.internal(textureLoc));
-        left = new Texture(Gdx.files.internal("Buttons.png"));
-        up = new Texture(Gdx.files.internal("A&B.png"));
+        left = new Texture(Gdx.files.internal("Buttons.png")); /** gets the right and left button **/
+        up = new Texture(Gdx.files.internal("A&B.png"));/** gets the A and B buttons **/
 
 
     }
@@ -39,8 +41,8 @@ public class Control implements Serializable{
 
     }
     public void draw(SpriteBatch batch){
-        batch.draw(up , 0, 0, Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/7);
-        batch.draw(left , (Gdx.graphics.getWidth()*8)/10, 0, Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/7);
+        batch.draw(up , 0, 0, Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/7); /** draws the button**/
+        batch.draw(left , (Gdx.graphics.getWidth()*8)/10, 0, Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/7); /** draws the button**/
 
 
     }
