@@ -1,4 +1,7 @@
 package com.game.icecube;
+/** This is the class for the policecar which is an obstacle 
+ that you must jump over, it is an early major obstacle
+ **/  
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
@@ -24,6 +27,8 @@ public class Police implements Serializable{
     Rectangle bounds;
     SpriteBatch batch;
     Texture police;
+    /** initializing the position of the car, drawing the image based on relative positioning
+     **/
     public Police(Vector2 position, String textureLoc){
         this.position = position;
         this.texture = new Texture(Gdx.files.internal(textureLoc));
@@ -33,7 +38,9 @@ public class Police implements Serializable{
     public void update (){
         bounds.set(position.x, position.y, Gdx.graphics.getWidth()/6, Gdx.graphics.getHeight()/6);
 
-
+/** Below is code to run functions/classes that are associated with this class and that are used in this
+ along with the code to remove image once it is not required to free up memory space
+ **/ 
     }
     public void dispose(){
         police.dispose();
