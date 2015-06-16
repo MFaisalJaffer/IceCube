@@ -1,5 +1,8 @@
 package com.game.icecube;
-
+/**
+ * The Cloud class is made for use of movement of the cloud which travels from right to left
+ * 
+ **/
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
@@ -16,21 +19,21 @@ import java.io.Serializable;
 public class Cloud implements Serializable{
 
     private static long serialVersionUID = 1L;
-    Vector2 position;
-    Texture texture;
+    Vector2 position; position; /** gpositon variable **/
+    Texture texture;position; /** texture variable **/
     String textureLoc;
     InputProcessor input;
 
 
 
     public Cloud(Vector2 position, String textureLoc){
-        this.position = position;
-        this.texture = new Texture(Gdx.files.internal(textureLoc));
+        this.position = position; /** gets the posisition set previously**/
+        this.texture = new Texture(Gdx.files.internal(textureLoc));position; /** gets the texture set previously**/
     }
     public void update (){
-    position.x-=1;
+    position.x-=1; position; /** moves the cloud by one pixel **/
             if (position.x < -250){
-                position.x=Gdx.graphics.getWidth()-50;
+                position.x=Gdx.graphics.getWidth()-50;position; /** if the cloud leaves the screen it redraws it over**/
             }
 
     }
