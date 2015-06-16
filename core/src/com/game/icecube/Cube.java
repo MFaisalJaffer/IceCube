@@ -74,13 +74,13 @@ public class Cube implements Serializable{
         direction="Swing Sprite(Flip).png";
         spritesheet = new Texture(Gdx.files.internal("Swing Sprite.png"));
         spritesheet1 = new Texture(Gdx.files.internal("Swing Sprite(Flip).png"));
-        frames = TextureRegion.split(spritesheet, spritesheet.getWidth()/4, spritesheet.getHeight());
+        frames = TextureRegion.split(spritesheet, spritesheet.getWidth()/4, spritesheet.getHeight());/** divides the sprite accordingly**/
         frames1= TextureRegion.split(spritesheet1, spritesheet.getWidth()/4, spritesheet.getHeight());
         animation=new Animation(0.09f, frames[0]);
         animation1=new Animation(0.09f, frames1[0]);
         right = false;
         left=false;
-        cubewalking1 = new Texture(Gdx.files.internal("Ice Cube1.png"));
+        cubewalking1 = new Texture(Gdx.files.internal("Ice Cube1.png"));/** declares which direction walking**/
         cubewalking = new Texture(Gdx.files.internal("cubewalking.png"));
         bounds = new Rectangle(position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
         police = new Police (new Vector2(Gdx.graphics.getWidth()-350, 80), "policecar.png");
@@ -97,22 +97,22 @@ public class Cube implements Serializable{
         float delta = Gdx.graphics.getDeltaTime();
         float posy = 0;
         frameTime += delta;
-        currentframe1 = animation1.getKeyFrame(frameTime, left);
-        currentframe = animation.getKeyFrame(frameTime, right);
+        currentframe1 = animation1.getKeyFrame(frameTime, left); /** animates the sprite**/
+        currentframe = animation.getKeyFrame(frameTime, right); /** animates the sprite**/
 
 
 
         if (Gdx.input.isTouched()){
-            if (Gdx.input.getX() < Gdx.graphics.getWidth()/10 && position.y < 150) {
-                Up=true;
+            if (Gdx.input.getX() < Gdx.graphics.getWidth()/10 && position.y < 150) {  /** if user touches**/
+                Up=true;  /**jumps**/
 
             }
             else{
                 Up = false;
             }
 
-            if (Gdx.input.getX() > 8*Gdx.graphics.getWidth()/10 && Gdx.input.getX() < 9*Gdx.graphics.getWidth()/10) {
-                Left=true;
+            if (Gdx.input.getX() > 8*Gdx.graphics.getWidth()/10 && Gdx.input.getX() < 9*Gdx.graphics.getWidth()/10) {  /** if user touches**/
+                Left=true;  /** moves left**/
                 Right=false;
                 left=true;
             }
@@ -121,7 +121,7 @@ public class Cube implements Serializable{
 
             }
             if (Gdx.input.getX() > 9*Gdx.graphics.getWidth()/10 && Gdx.input.getX() < 10*Gdx.graphics.getWidth()/10) {
-                Right=true;
+                Right=true;  /** moves right**/
                 Left=false;
                 right=true;
             }
@@ -131,7 +131,7 @@ public class Cube implements Serializable{
 
             if (Left){
 
-                left();
+                left();  /** moves left**/
             }
             if (Right){
 
@@ -172,18 +172,18 @@ public class Cube implements Serializable{
 
         }
 
-        if (PlayScreen.level == 1 &&( position.x+(Gdx.graphics.getWidth()/14))>((Gdx.graphics.getWidth()*6)/10)&& position.x<(((Gdx.graphics.getWidth()*6)/10)+Gdx.graphics.getWidth()/6) && position.y<((Gdx.graphics.getHeight()/6)+100)){
-            position.y=Gdx.graphics.getHeight()/6+78;
+        if (PlayScreen.level == 1 &&( position.x+(Gdx.graphics.getWidth()/14))>((Gdx.graphics.getWidth()*6)/10)&& position.x<(((Gdx.graphics.getWidth()*6)/10)+Gdx.graphics.getWidth()/6) && position.y<((Gdx.graphics.getHeight()/6)+100)){  /** if user hits an obstacle**/
+            position.y=Gdx.graphics.getHeight()/6+78; /** stands on top of obstacle**/
         }
-        if (PlayScreen.level == 3 &&( position.x+(Gdx.graphics.getWidth()/14))>((Gdx.graphics.getWidth()*6)/10)&& position.x<(((Gdx.graphics.getWidth()*6)/10)+Gdx.graphics.getWidth()/3) && position.y>((Gdx.graphics.getHeight()/3)+100)){
-            position.y=Gdx.graphics.getHeight()/3+78;
+        if (PlayScreen.level == 3 &&( position.x+(Gdx.graphics.getWidth()/14))>((Gdx.graphics.getWidth()*6)/10)&& position.x<(((Gdx.graphics.getWidth()*6)/10)+Gdx.graphics.getWidth()/3) && position.y>((Gdx.graphics.getHeight()/3)+100)){/** if user hits an obstacle**/
+            position.y=Gdx.graphics.getHeight()/3+78;/** stands on top of obstacle**/
             position.y+=70;
         }
-        if (PlayScreen.level == 3 &&( position.x+(Gdx.graphics.getWidth()/14))>(240)&& position.x<(450) && position.y<((Gdx.graphics.getHeight()*7)/10)){
+        if (PlayScreen.level == 3 &&( position.x+(Gdx.graphics.getWidth()/14))>(240)&& position.x<(450) && position.y<((Gdx.graphics.getHeight()*7)/10)){/** if user hits an obstacle**/
             position.y=(Gdx.graphics.getHeight()*15)/20;
         }
-        if (PlayScreen.level == 3 &&( position.x+(Gdx.graphics.getWidth()/14))>(750)&& position.x<(800) && position.y<((Gdx.graphics.getHeight()*7)/10)){
-            position.y=((Gdx.graphics.getHeight()*10)/20)+45;
+        if (PlayScreen.level == 3 &&( position.x+(Gdx.graphics.getWidth()/14))>(750)&& position.x<(800) && position.y<((Gdx.graphics.getHeight()*7)/10)){/** if user hits an obstacle**/
+            position.y=((Gdx.graphics.getHeight()*10)/20)+45;/** stands on top of obstacle**/
         }
     }
     public void draw (SpriteBatch batch){
@@ -207,14 +207,14 @@ public class Cube implements Serializable{
             Left=false;
         }
         if (Up){
-            batch.draw(cubewalking1, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
+            batch.draw(cubewalking1, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6); /** drews the Up cube**/
 
         }
         if (facing==0 && Right==false){
-            batch.draw(cubewalking1, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
+            batch.draw(cubewalking1, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);/** drews the right cube**/
         }
         if (facing==1 && Left==false ){
-            batch.draw(cubewalking, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
+            batch.draw(cubewalking, position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);/** drews the left cube**/
         }
 
 
@@ -227,7 +227,7 @@ public class Cube implements Serializable{
         vel_y= (Gdx.graphics.getHeight()/30);
     }
     public void left(){
-        vel_x= -8;
+        vel_x= -8; /** moves left **/
     }
     public void ul (){
         vel_x= -8;
@@ -238,14 +238,14 @@ public class Cube implements Serializable{
         vel_y= 12;
     }
     public void right(){
-        if (PlayScreen.level == 1 && (position.x+Gdx.graphics.getWidth()/14)+15>((Gdx.graphics.getWidth()*6)/10) && Right && position.y<((Gdx.graphics.getHeight()/6)+75) && position.x<(((Gdx.graphics.getWidth()*6)/10)+Gdx.graphics.getWidth()/6)){
-            vel_x=0;
+        if (PlayScreen.level == 1 && (position.x+Gdx.graphics.getWidth()/14)+15>((Gdx.graphics.getWidth()*6)/10) && Right && position.y<((Gdx.graphics.getHeight()/6)+75) && position.x<(((Gdx.graphics.getWidth()*6)/10)+Gdx.graphics.getWidth()/6)){/**if hits obtacle **/
+            vel_x=0;/** doesnt move right **/
         }
-        if (PlayScreen.level == 3 && (position.x+Gdx.graphics.getWidth()/14)+15>240 && Right && position.y<((Gdx.graphics.getHeight()*3)/4) && position.x<450){
-            vel_x=0;
+        if (PlayScreen.level == 3 && (position.x+Gdx.graphics.getWidth()/14)+15>240 && Right && position.y<((Gdx.graphics.getHeight()*3)/4) && position.x<450){/** hits obstacle **/
+            vel_x=0;/** doesnt move right **/
         }
         else {
-            vel_x = 8;
+            vel_x = 8; /**moves right **/
         }
     }
 
