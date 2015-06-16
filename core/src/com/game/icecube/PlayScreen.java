@@ -1,4 +1,7 @@
 package com.game.icecube;
+/** This class segment of code implements all levels, initializes their drawing
+ and sets the base line for the map
+**/
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -13,7 +16,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 
-
+/** implements every texture image of map into playscreen to be used by other classes and displayed
+ **/ 
 public class PlayScreen implements Screen {
     SpriteBatch batch;
     Texture h;
@@ -35,6 +39,9 @@ public class PlayScreen implements Screen {
         this.game =game;
     }
     @Override
+    /**
+     Draws all the various textures here
+     **/
     public void show() {
         level=1;
         police = new Police (new Vector2(((Gdx.graphics.getWidth()*6)/10), 80), "policecar.png");
@@ -62,7 +69,9 @@ public class PlayScreen implements Screen {
         floor.update();
         sun.update();
         coin.update();
-
+/** 
+ If statements for the levels and what to draw based on which level, procedurally based programming approach
+ **/
         if (level==1){
             batch.begin();
             batch.draw(sun.getTexture(), sun.getPosition().x, sun.getPosition().y);
@@ -118,7 +127,9 @@ public class PlayScreen implements Screen {
 
         }
         System.out.println(level);
-
+/**
+ * some universal collision detection for the cube and cloud movement 
+ **/ 
         if (cloud.getPosition().x==cube.getPosition().x){
 
         }
