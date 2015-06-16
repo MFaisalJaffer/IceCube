@@ -91,7 +91,10 @@ public class Cube implements Serializable{
     }
 
 
-
+/**
+ * Updates the value which is set for the cubes current frame rate, and 
+ * the position of the rectangle around ice cube constantly
+ **/
     public void update (){
         bounds.set(position.x, position.y, Gdx.graphics.getWidth()/14, Gdx.graphics.getHeight()/6);
         float delta = Gdx.graphics.getDeltaTime();
