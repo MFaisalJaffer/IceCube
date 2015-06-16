@@ -189,6 +189,10 @@ public class Cube implements Serializable{
             position.y=((Gdx.graphics.getHeight()*10)/20)+45;/** stands on top of obstacle**/
         }
     }
+    
+    /**
+     * Draws the ice cube depending on which way he is facing
+     **/
     public void draw (SpriteBatch batch){
             if (!Gdx.input.isTouched()){
                 right=false;
