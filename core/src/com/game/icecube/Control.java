@@ -1,7 +1,7 @@
 package com.game.icecube;
  /**
  * Name: Faisal, Ryan, Dimitar and Zain
- * Description:This class if for the controls of the game
+ * Description:This class contains the controls of the character for the game
  **/
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
@@ -41,13 +41,14 @@ public class Control implements Serializable{
 
 
     }
+    /** positions **/
     public void draw(SpriteBatch batch){
         batch.draw(up , 0, 0, Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/7);
         batch.draw(left , (Gdx.graphics.getWidth()*8)/10, 0, Gdx.graphics.getWidth()/5, Gdx.graphics.getHeight()/7);
 
 
     }
-
+  /** creates the character movement **/
     @SuppressWarnings("unused")
     private static byte[] serialize(Object obj) throws IOException{
         ByteArrayOutputStream b = new ByteArrayOutputStream();
