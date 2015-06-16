@@ -23,12 +23,12 @@ public class IceCubeGame extends Game {
 	@Override
 	public void create () {
         game=this;
-        setScreen(new MainMenu(game));
+        setScreen(new MainMenu(game)); /** sends user to Main Menu**/
 
 	}
 
 	@Override
 	public void render () {
-    super.render();
+    super.render(); /** renders the mainmenu **/
 	}
 }
