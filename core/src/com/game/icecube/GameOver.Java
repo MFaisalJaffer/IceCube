@@ -47,6 +47,7 @@ public class GameOver implements Screen {
         BitmapFont font;
         batch = new SpriteBatch();
         stage = new Stage();
+        /** Sets up the font for the game over screen "Game Over"                         **/
         font = new BitmapFont (Gdx.files.internal("font.fnt"), false);
 
 
@@ -54,6 +55,7 @@ public class GameOver implements Screen {
         skin = new Skin();
         buttonatlas = new TextureAtlas("button2.pack");
         skin.addRegions(buttonatlas);
+        /** initial logo was supposed to be in the game over but got scrapped **/
         logo = new Texture(Gdx.files.internal("logo.png"));
 
         buttonstyle = new TextButton.TextButtonStyle();
@@ -62,8 +64,8 @@ public class GameOver implements Screen {
         buttonstyle.down = skin.getDrawable("button2pressed");
         buttonstyle.font = font;
         button=new TextButton("", buttonstyle);
-        button.setWidth(button.getWidth());
-        button.setHeight(button.getHeight());
+        button.setWidth(button.getWidth()); /**  Sets the return buttons width, to start game over again    **/
+        button.setHeight(button.getHeight()); /** Sets the return buttons height, to start game over again **/
         button.setPosition(Gdx.graphics.getWidth() / 2 - (Gdx.graphics.getWidth() * 9 / 10) / 2, Gdx.graphics.getHeight() / 2 - (button.getHeight()/2));
         stage.addActor(button);
 
