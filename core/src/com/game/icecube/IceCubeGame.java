@@ -14,7 +14,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import sun.applet.Main;
 /**
- * The main game code, implements the other classes
+ * Name: Faisal, Ryan, Dimitar and Zain
+ * Description: The main game code, implements the other classes
  * 
  * 
  **/
