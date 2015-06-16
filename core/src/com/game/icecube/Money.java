@@ -27,7 +27,9 @@ public class Money{
     Vector2 position, size;
     Texture money;
     Rectangle bounds;
-
+//following code is for position based drawing of the cash money and sets up its 
+// collision detection by drawing the rectangles and initializing the cash by drawing the texture and importing
+// the picture
     public Money(Vector2 position, Vector2 size){
         this.position = position;
         this.size = size;
