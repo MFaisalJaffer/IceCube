@@ -25,7 +25,8 @@ import javafx.animation.AnimationTimer;
 
 
 /**
- * Created by faisaljaffer on 15-04-16.
+ * Name: Faisal, Ryan, Dimitar and Zain
+ * Description: The animation of the main character as well as controlls the animation and character movement
  */
 public class Cube implements Serializable{
 
