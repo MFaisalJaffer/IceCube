@@ -1,6 +1,7 @@
 package com.game.icecube;
- /** 
- This class if for the controls of the game
+ /**
+ * Name: Faisal, Ryan, Dimitar and Zain
+ * Description:This class if for the controls of the game
  **/
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
