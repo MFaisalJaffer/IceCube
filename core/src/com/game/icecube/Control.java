@@ -1,5 +1,7 @@
 package com.game.icecube;
-
+ /** 
+ This class if for the controls of the game
+ **/
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
