@@ -46,13 +46,14 @@ public class Cloud implements Serializable{
     }
 
     @SuppressWarnings("unused")
+    /** places the cloud**/
     private static byte[] serialize(Object obj) throws IOException{
         ByteArrayOutputStream b = new ByteArrayOutputStream();
         ObjectOutputStream o = new ObjectOutputStream(b);
         o.writeObject(obj);
         return b.toByteArray();
     }
-
+    /** places the moving cloud**/
     public static Object deserialize(byte[] bytes) throws IOException, ClassNotFoundException {
         ByteArrayInputStream b = new ByteArrayInputStream(bytes);
         ObjectInputStream o = new ObjectInputStream(b);
