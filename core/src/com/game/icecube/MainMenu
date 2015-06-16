@@ -50,10 +50,10 @@ public class MainMenu implements Screen{
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClearColor(1, 1, 1, 1);  /** draws a white background**/
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        stage.draw();
+        stage.draw();  /** draws the stage**/
         batch.begin();
         batch.draw(logo, Gdx.graphics.getWidth() / 2 - (Gdx.graphics.getWidth() * 3 / 8) / 2, 0, Gdx.graphics.getWidth() * 3 / 8, Gdx.graphics.getHeight() );
 
@@ -92,19 +92,19 @@ public class MainMenu implements Screen{
         buttonstyle = new TextButtonStyle();
         buttonstyle.up= skin.getDrawable("button2");
         buttonstyle.over = skin.getDrawable("button2pressed");
-        buttonstyle.down = skin.getDrawable("button2pressed");
+        buttonstyle.down = skin.getDrawable("button2pressed");                           /** draws the main PLAY buttons**/
         buttonstyle.font = font;
         button=new TextButton("", buttonstyle);
         button.setWidth(button.getWidth());
         button.setHeight(button.getHeight());
-        button.setPosition(Gdx.graphics.getWidth() / 2 - (Gdx.graphics.getWidth() * 9 / 10) / 2, Gdx.graphics.getHeight() / 2 - (button.getHeight()/2));
+        button.setPosition(Gdx.graphics.getWidth() / 2 - (Gdx.graphics.getWidth() * 9 / 10) / 2, Gdx.graphics.getHeight() / 2 - (button.getHeight()/2));  /** size of the button **/
         stage.addActor(button);
 
         Gdx.input.setInputProcessor(stage);
 
         button.addListener(new InputListener(){
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
-                game.setScreen(new PlayScreen(game));
+                game.setScreen(new PlayScreen(game));  /** if the button is touched, sends user to PlayScreen **/
                 return true;
             }
 
@@ -138,10 +138,10 @@ public class MainMenu implements Screen{
     @Override
     public void dispose() {
         // TODO Auto-generated method stub
-        batch.dispose();
-        font.dispose();
-        skin.dispose();
-        stage.dispose();
+        batch.dispose(); /** disposes the batch **/
+        font.dispose(); /** disposes the font **/
+        skin.dispose(); /** disposes the skin**/
+        stage.dispose(); /** disposes the stage**/
     }
 
 }
