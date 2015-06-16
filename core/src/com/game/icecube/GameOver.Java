@@ -1,7 +1,8 @@
 package com.game.icecube;
 
 /**
- * The game over class is used to show a prompt whenever the main character dies or loses
+ * Name: Faisal, Ryan, Dimitar and Zain
+ * Description: The game over class is used to show a prompt whenever the main character dies or loses
  * all of his lives. The player can then choose to start a new game.
  * 
  **/
