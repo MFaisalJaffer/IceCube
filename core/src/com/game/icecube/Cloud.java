@@ -1,7 +1,7 @@
 package com.game.icecube;
 /**
- * The Cloud class is made for use of movement of the cloud which travels from right to left
- * 
+ * Name: Faisal, Ryan, Dimitar and Zain
+ * Description: The Cloud class is made for use of movement of the cloud which travels from right to left
  **/
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
